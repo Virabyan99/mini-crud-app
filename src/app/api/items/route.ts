@@ -51,6 +51,25 @@ itemsAPI.get("/", async (c) => {
   }
 });
 
+// 📌 Retrieve Item by ID (GET /api/items/:id)
+itemsAPI.get("/:id", async (c) => {
+  try {
+    const db = c.env.DB as D1Database;
+    const itemId = c.req.param("id");
+
+    // Fetch the item by ID
+    const result = await db.prepare("SELECT * FROM items WHERE id = ?").bind(itemId).first();
+
+    if (!result) {
+      return c.json({ error: "No item found with this ID." }, 404);
+    }
+
+    return c.json({ item: result });
+  } catch (error) {
+    return c.json({ error: error.toString() }, 500);
+  }
+});
+
 // 📌 Update Item (PUT /api/items/:id)
 itemsAPI.put("/:id", async (c) => {
   try {
