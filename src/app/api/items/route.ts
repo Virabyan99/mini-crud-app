@@ -3,13 +3,13 @@ import { Hono } from 'hono'
 const itemsAPI = new Hono()
 
 // Authentication Middleware to Protect Routes
-itemsAPI.use("*", async (c, next) => {
-  const authHeader = c.req.header("Authorization");
-  if (!authHeader || authHeader !== "Bearer my-secret-token") {
-    return c.json({ error: "Unauthorized: Invalid or missing token." }, 401);
-  }
-  return await next();
-});
+// itemsAPI.use("*", async (c, next) => {
+//   const authHeader = c.req.header("Authorization");
+//   if (!authHeader || authHeader !== "Bearer my-secret-token") {
+//     return c.json({ error: "Unauthorized: Invalid or missing token." }, 401);
+//   }
+//   return await next();
+// });
 
 // 📌 Create Item (POST /api/items)
 itemsAPI.post('/', async (c) => {
