@@ -1,7 +1,10 @@
 import { Hono } from "hono";
 import apiRoutes from "./app/api"; // Import API routes
+import { cors } from "hono/cors";
 
 const app = new Hono();
+
+app.use(cors({ origin: '*' })); 
 
 // Root route
 app.get('/', (c) => c.text('Hello, Items API!')); // Basic "Hello" message
