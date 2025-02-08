@@ -1,0 +1,13 @@
+name = "mini-crud-app"
+main = "src/index.ts"
+compatibility_date = "2025-02-08"
+
+
+[[d1_databases]]
+binding = "DB"
+database_name = "items_db"
+database_id = "8a021b16-0c05-4dea-9b86-fb432742d336"
+
+[[kv_namespaces]]
+binding = "ITEM_CACHE"
+id = "13f334f607584c41b30f9364caa4cef5"
